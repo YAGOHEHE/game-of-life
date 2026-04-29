@@ -5,6 +5,9 @@ on: push
 jobs:
   game-of-life-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '17',  '21']
     steps:
       - name: Java version
         run: java -version
@@ -20,6 +23,6 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: ${{matrix.java}}
 
 
